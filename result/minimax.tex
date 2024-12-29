@@ -1,0 +1,121 @@
+\input{preamble_2}
+%-----------------------------------------------------------------------------------------------------------------------
+% 文章開始
+\title{minimax setting}
+\author{{周昱宏}}
+\date{{\TT \today}}
+\begin{document}
+\maketitle
+\fontsize{12}{22 pt}\selectfont
+\doublespacing
+
+\section{第一次計算設定（初步搜索）}
+
+\subsection*{目標}
+快速尋找總樣本數（$n_{\text{Max}}$）的合理範圍，縮小解空間，為進一步搜索做準備。
+
+\subsection*{設定細節}
+\begin{enumerate}[1.]
+    \item \textbf{粒子數（$n_{\text{Swarm}}$）}：200  
+          使用較少的粒子數進行初步搜索，以快速探索整體解空間。
+    \item \textbf{迭代次數（$n_{\text{Iter}}$）}：100  
+          限制迭代次數，降低計算資源消耗。
+    \item \textbf{PSO 類型（$psoType$）}：基本型（\texttt{basic}）  
+    
+    \item \textbf{搜索範圍（$[lower, upper]$）}：
+          \begin{itemize}
+              \item 總樣本數（$n_{\text{Max}}$）：設定在 $[10, 70]$ 範圍內。
+              \item 其他參數：包括極化樣本數和反應比例，設置在合理的範圍內。
+          \end{itemize}
+    \item \textbf{限制條件}：型 I 錯誤率（$\alpha = 0.05$）及型 II 錯誤率（$\beta = 0.2$）不超過指定上限。
+\end{enumerate}
+
+\subsection{結果}
+成功搜尋到初步的總樣本數 $n_{\text{Max}}$，即 \texttt{initial\_nMax}，作為進一步搜索的基礎。
+
+\section{第二次計算設定（進一步搜索）}
+
+\subsection{目標}
+鎖定第一次計算得到的總樣本數（\texttt{initial\_nMax}）當作上下界，調整其他參數以最佳化整體設計，達成 \textbf{minimax 設計}。
+
+\subsection{設定細節}
+\begin{enumerate}[1.]
+    \item \textbf{粒子數（$n_{\text{Swarm}}$）}：500  
+          增加粒子數以提升搜索精確性。
+    \item \textbf{迭代次數（$n_{\text{Iter}}$）}：300  
+          增加迭代次數，讓算法更有機會逼近最佳解。
+    \item \textbf{PSO 類型（$psoType$）}：基本型（\texttt{basic}）  
+          適合在固定條件下進行搜索。
+    \item \textbf{搜索範圍（$[lower, upper]$）}：
+          \begin{itemize}
+              \item 總樣本數（$n_{\text{Max}}$）：固定為 \texttt{initial\_nMax}。
+              \item 其他參數：如極化樣本數與反應比例，設置在合理範圍內進行最佳化。
+          \end{itemize}
+    \item \textbf{限制條件}：型 I 錯誤率（$\alpha = 0.05$）及型 II 錯誤率（$\beta = 0.2$）保持不變。
+\end{enumerate}
+
+
+\newpage
+\section{初步搜索（新增步驟）}
+改後程式碼新增了初步搜索的步驟，以快速縮小解空間：
+
+
+\textbf{改後程式碼內容：}
+\begin{lstlisting}[language=R]
+# 設定PSO配置（初步搜索）
+initial_algSetting <- getPSOInfo(
+  nSwarm = 200,      # 初步設置的粒子數
+  maxIter = 100,     # 初步設置的迭代次數
+  psoType = "basic"  # PSO類型（保持量子模式）
+)
+
+# 運行PSO以尋找minimax設計（初步搜索）
+initial_minMaxRes <- globpso(
+  objFunc = kStageMinMaxObj, PSO_INFO = initial_algSetting, 
+  lower = lower, upper = upper, 
+  seed = NULL, verbose = TRUE,
+  nMin = nMinEachInterim, cliRequirement = cliRequirement
+)
+
+# 查看初步的總樣本數
+initial_minMaxRes$par[1]
+initial_nMax <- initial_minMaxRes$par[1]
+\end{lstlisting}
+
+\subsection{進一步搜索的上下界調整}
+改後程式碼新增了根據初步搜索結果調整上下界的步驟：
+
+\textbf{原始程式碼無此段落。}
+
+\textbf{改後程式碼新增以下內容：}
+\begin{lstlisting}[language=R]
+# 固定總樣本數並繼續尋找其他參數
+upper2 <- c(initial_nMax, rep(0.5*pi, nStage - 1), rep(1, nStage))
+lower2 <- c(initial_nMax, rep(0.0*pi, nStage - 1), rep(0, nStage))
+\end{lstlisting}
+
+\subsection{進一步搜索的設定與執行}
+改後程式碼分為初步搜索與進一步搜索兩部分，因此進一步搜索的 PSO 設定和執行也有區別：
+
+
+\textbf{新增程式碼：}
+\begin{lstlisting}[language=R]
+# 設定PSO配置（進一步搜索）
+final_algSetting <- getPSOInfo(
+  nSwarm = 500,     # 增加粒子數
+  maxIter = 300,    # 增加迭代次數
+  psoType = "basic" 
+)
+
+# 運行PSO以尋找minimax設計（進一步搜索）
+final_minMaxRes <- globpso(
+  objFunc = kStageMinMaxObj, PSO_INFO = final_algSetting, 
+  lower = lower2, upper = upper2, 
+  seed = NULL, verbose = TRUE,
+  nMin = nMinEachInterim, cliRequirement = cliRequirement
+)
+\end{lstlisting}
+
+
+
+\end{document}

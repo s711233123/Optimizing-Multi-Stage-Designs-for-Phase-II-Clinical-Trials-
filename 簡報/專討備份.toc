@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Research Background}{2}{0}{1}
+\beamer@sectionintoc {2}{Literature Review}{3}{0}{2}
+\beamer@sectionintoc {3}{Expected Sample Size}{5}{0}{3}
+\beamer@sectionintoc {4}{PSO Algorithm}{9}{0}{4}
+\beamer@sectionintoc {5}{Existing results}{10}{0}{5}
+\beamer@sectionintoc {6}{Discussions, Challenges, and Future Plans}{14}{0}{6}

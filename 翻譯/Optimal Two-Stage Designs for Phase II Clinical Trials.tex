@@ -1,0 +1,345 @@
+\input{preamble_2}
+%-----------------------------------------------------------------------------------------------------------------------
+% 文章開始
+\title{Optimal Two-Stage Designs for Phase II Clinical Trials\\二期臨床試驗的兩階段設計最佳化}
+\author{{周昱宏}}
+\date{{\TT \today}}
+\begin{document}
+\maketitle
+\fontsize{12}{22 pt}\selectfont
+\doublespacing
+
+\section{abstract}
+	The primary objective of a phase II clinical trial of a new drug or regimen is to determine whether it has sufficient biological activity against the disease under study to warrant more extensive development. Such trials are often conducted in a multiinstitution setting where designs of more than two stages are difficult to manage. This paper presents two-stage designs that are optimal in the sense that the expected sample size is minimized if the regimen has low activity subject to constraints upon the size of the type 1 and type 2 errors. Two-stage designs which minimize the maximum sample size are also determined. Optimum and "minimax" designs for a range of design parameters are tabulated. These designs can also be used for pilot studies of new regimens where toxicity is the endpoint of interest. 
+
+	這篇文獻主要討論二期臨床試驗的設計，其主要目標是確定新藥物或療法是否對研究中的疾病具有足夠的生物活性，以便值得進一步開展更廣泛的研究和開發。這些試驗通常在多個機構的設置下進行，而設計超過兩個階段的多階段設計則很難管理。該文獻介紹了兩階段設計，這些設計在一定程度上是最優的，因為如果該療法的活性較低，則期望樣本量將被最小化，同時受到對第一型和第二型錯誤大小的限制。同時還確定了最小化最大樣本量的兩階段設計。文獻中還列出了一系列設計參數的最佳和「最小極大」設計。這些設計還可用於新療法的前期研究，其中毒性是感興趣的終點。
+
+這篇文獻的主要貢獻在於提出了在二期臨床試驗中使用兩階段設計的最佳方法，以便有效地評估新藥物或治療方法的活性，同時控制錯誤率和最小化預期的研究樣本量。
+
+KEY WORDS: clinical trials, phase II trials, optimization 
+關鍵字: 臨床試驗, II 期試驗, 優化
+
+\section{INTRODUCTION}
+	A phase II study of a cancer treatment is ari uncontrolled trial for obtaining an initial estimate of the degree of antitumor effect of the treatment. Phase I trials provide information about the maximum tolerated dose(s) of the treatment, which is important because most cancer treatments must be delivered at maximum dose for maximum effect. Phase I trials generally treat only three to six patients per dose level, however, and the patients are diverse with regard to their cancer diagnosis [1]. Consequently such trials provide little or no information about antitumor activity. The proportion of patients whose tumors shrink by at least $50\%$ is the primary endpoint of most phase II trials although the durability of such responses is also of interest. Such trials are not controlled and do not determine the "effectiveness" of the treatment or the role of the drug in the treatment of the disease. The purpose of a phase II trial of a new anticancer drug is to determine whether the drug has sufficient activity against a specified type of tumor to warrant its further development.Further development may mean combining the drug with other drugs, evaluation in patients with less advanced disease, or initiation of phase III studies in which survival results are compared to those for a standard treatment.Phase II trials of combination regimens are also conducted to determine whetherthe treatment is sufficiently promising to warrant a major controlled clinical evaluation against the standard therapy. 
+
+癌症治療的 II 期研究是非對照試驗，旨在獲得治療抗腫瘤效果程度的初步估計。 I期試驗提供了有關治療的最大耐受劑量的信息，這很重要，因為大多數癌症治療需要達到最大劑量以獲得最大效果。然而，一期試驗通常每個劑量水平只治療三到六名患者，而且這些患者的癌症診斷各有不同[1]。因此，此類試驗幾乎沒有提供或沒有關於抗腫瘤活性的資訊。大多數 II 期試驗的主要目標是患者的腫瘤比例縮小至少 $50\%$ 儘管這種反應的持久性也令人感興趣。此類試驗是非對照的且無法確定治療的「有效性」或藥物在治療疾病中的作用。一個新的抗癌藥物的II期試驗的目的是確定該藥物對特定類型的腫瘤是否具有足夠的活性，以值得進一步開發。進一步的開發可能意味著將該藥物與其他藥物結合，對病情較輕的患者進行評估，或進行 III 期研究其中將存活結果與標準治療的結果進行比較。也進行了聯合治療方案的 II 期試驗以確定此治療方法是否有足夠的前景，值得進行對標準治療進行重大的對照臨床評估。
+
+	The designs developed here are based on testing a null hypothesis $H_0:p \leq p_o$ that the true response probability is less than some uninteresting level $P_0$.If the null hypothesis is true, then we require that the probability should be less than $\alpha$ of concluding that the drug is sufficiently promising that it should be accepted for further study in other clinical trials. We also require that if a specified alternative hypothesis $H_1:p \geq p_1$ that the true response probability is at least some desirable target level $p_1$ is true, then the probability of rejecting the drug for further study should be less than $\beta$. In addition to these constraints, we wish to minimize the number of patients treated with a drug of low activity. We shall restrict our attention to two-stage designs because of practical considerations in the management of multi-institution clinical trials.The main practical consideration is that evaluation of a patient's response is not instantaneous and may require observation for weeks or months. Consequently patient accrual at the end of a stage may have to be suspended until it is determined whether the criteria for continuing are satisfied. Such suspension of accrual is awkward for physicians who are entering patients on the study. More than one such disruption during the trial would, in many cases, not be acceptable. Although more stages are desirable from the standpoint of efficiency, two-stage designs often achieve a substantial portion ofthe savings of fully sequential designs [2-4]. 
+
+	這裡開發的設計是基於測試虛無假設 $H_0:p \leq p_o$ 表示真實反應機率小於某個不感興趣水平 $P_0$。如果虛無假設成立，那麼我們要求在做出此藥物有足夠值得在其他臨床試驗進一步研究的結論機率應該小於 $\alpha$ 。我們也要求，如果指定對立假設 $H_1:p \geq p_1$ 表示真實的反應機率至少達到某個理想的目標水平 $p_1$ ，則拒絕進一步研究藥物的機率應該小於 $\beta$ 。除了這些限制之外，我們還希望最小化接受低活性藥物治療的患者數量。由於在管理多機構臨床試驗時存在的實際考慮，我們將我們的注意力限制在兩階段設計上。主要的實際考慮是，評估患者的反應並非瞬間完成，可能需要進行幾週甚至幾個月的觀察。因此，在一個階段結束時，可能需要暫停患者的累積，直到確定是否滿足繼續的標準。這種累積的暫停對於參與研究的醫生來說可能會很困難。在許多情況下，試驗期間出現多次這樣的中斷是不可接受的。儘管從效率的角度來看更多階段是可取的，但是兩階段設計通常能夠節省實現完全順序設計的相當大部分成本[2-4]。
+	
+\section{OPTIMAL TWO-STAGE DESIGNS}
+	If the numbers of patients studied in the first and second stage are denoted by $n_l$ and $n_2$ respectively, then the expected sample size is EN= $n_l$ +(1-PET) $n_2$, where PET represents the probability of early termination after the first stage. The decision of whether or not to terminate after the first stage will be based on the number of responses observed for those $n_l$ patients. The expected sample size EN and the probability of early termination depend on the true probability of response $p$. We will terminate the experiment at the end of the first stage and reject the drug if $r_1$ or fewer responses are observed.This occurs with probability PET = $B(r_1;p,n_1)$, where $B$ denotes the cumulative binomial distribution. We will reject the drug at the end of the second stage if $r$ or fewer responses are observed. Hence the probability of rejecting a drug with success probability $p$ is 
+
+$$B(r_1;p,n_1)+\sum_{x=r_1+1}^{\min[n_1,r]} b(x;p,n_1)B(r-x;p,n_2)$$ 
+where $b$ denotes the binomial probability mass function.
+
+
+	如果第一階段和第二階段研究的患者人數分別為 $n_l$ 和 $n_2$，則預期樣本大小為 $EN$= $n_1$ +(1-PET) $n_2$，其中 PET 表示第一階段後提前終止的機率。 第一階段結束後決定是否終止將基於對這些 $n_l$ 患者觀察到的反應數量$r_1$。 這預期樣本量 EN 和提前終止的機率取決於響應 $p$ 的真實機率。 實驗如果觀察到 $r_l$ 或更少的正面反應，則試驗可能會在第一階段結束時終止。\\這種情況發生的機率為 PET = $B(r_1;p,n_1)$，其中 $B$ 表示累積二項分佈。 如果觀察到 $r$ 或更少的反應，我們將在第二階段結束時拒絕該藥物。 因此拒絕具有成功機率$p$的藥物的機率是
+
+\begin{equation}
+\ B(r_1;p,n_1)+\sum_{x=r_1+1}^{\min[n_1,r]} b(x;p,n_1)B(r-x;p,n_2)\label{eq1}
+\end{equation}
+其中 $b$ 表示二項式機率質量函數。
+
+	The design approach considered here is to specify the parameters $p_0$ 、 $p_l$ 、 $\alpha$,and $\beta$ and then determine the two-stage design that satisfies the error probability constraints and minimizes the expected sample size when the response probability is $p_0$. The optimization is taken over all values of $n_1$ and $n_2$ as well as $r_1$ and $r$. Early acceptance of the drug is not permitted here. The ethical imperative for early termination occurs when the drug has low activity. When the drug has substantial activity $(\geq p_l)$ there is often interest in studying additional patients in order to estimate the proportion, extent, and durability of response. We have optimized the designs to minimize expected sample size when the response probability is $p_0$. This is because of ethical considerations. It would be possible to reduce expected sample sizes for the designs considered here by termination early if the number of responses in the first stage exceeds the final decision criterion $r$. This would have a negligible effect on performance under $H_0$. If early rejection of $H_0$ is really of interest, however,a less conservative early rejection rule should be used.
+
+	這裡考慮的設計方法是指定參數 $p_0$ 、 $p_l$ 、 $\alpha$ 和 $\beta$ ，然後確定滿足誤差機率約束並在反應機率為 $p_0$ 時最小化預期樣本量的兩階段設計。 對 $n_1$ 和 $n_2$ 以及 $r_1$ 和 $r$ 的所有值進行最佳化。 這裡不允許提前接受藥物。 當藥物活性較低時，道德上必須提前終止。 當藥物具有顯著活性 $(\geq p_l)$ 時，人們通常會有興趣繼續研究額外的患者，以估計反應的比例、程度和持久性。 我們優化了設計，以在反應機率為 $p_0$ 時最小化預期樣本量。\\
+$r_1$超過最終決策標準 $r$\\
+透過提前終止來減少此處考慮的設計預期樣本大小，這對 $H_0$ 下的效果影響可以忽略不計。 \\
+對 $H_0$ 的提早中止感興趣\\
+使用不太保守的早期拒絕規則。
+
+	For specified values of $p_0$,$p_1$,$\alpha$, and $\beta$ we have determined optimal designs by enumeration using exact binomial probabilities. For each value of total sample size $n$ and each value of $n_1$ in the range $(1,n-1)$ we determined the integer values of $r_1$ and $r$, which satisfied the two constraints and minimized the expected sample size when $p = p_0$. This was found by searching over the range $r_1 \in (0,n_1)$. For each value of $r_1$ we determined the maximum value of $r$ that satisfied the type 2 error constraint. We then examine whether that set of parameters $(n,n_1,r_1,r)$ satisfied the type 1 error constraint. If it did, then we compared the expected sample size to the minimum achieved by previous feasible designs and continued the search over $r_1$ . Keeping $n$ fixed we searched over the range of $n_1$ to find the optimal two-stage design for that maximum sample size $n$. The search over $n$ ranged from a lower value of about
+$$\bar{p}(1-\bar{p}) \left[ \frac{z_{1-\alpha}+z_{1-\beta}}{p_1-p_0}\right]^2,$$
+
+	對於 $p_0$ 、 $p_1$ 、 $\alpha$ 和 $\beta$ 的指定值，我們透過使用精確二項式機率的枚舉確定了最佳設計。 對於 $(1,n-1)$ 範圍內的總樣本量 $n$ 的每個值和 $n_1$ 的每個值，我們確定了 $r_1$ 和 $r$ 的整數值，這滿足兩個限制並在 $p = p_0$ 時最小化預期樣本量。 這是透過搜尋 $r_1 \in (0,n_1)$ 範圍找到的。 對於 $r_1$ 的每個值，我們確定滿足 2 類誤差限制的 $r$ 的最大值。 然後我們檢查該組參數 $(n,n_1,r_1,r)$ 是否滿足類型 1 誤差約束。 如果確實如此，那麼我們將預期樣本大小與先前可行設計所實現的最小值進行比較，並繼續在 $r_1$ 上進行搜尋。 保持 $n$ 固定，我們在 $n_1$ 範圍內進行搜索，以找到最大樣本量 $n$ 的最佳兩階段設計。 對 $n$ 的搜尋範圍從較低值約
+$$\bar{p}(1-\bar{p}) \left[ \frac{z_{1-\alpha}+z_{1-\beta}}{p_1-p_0}\right]^2,$$
+
+	where $p = (p_0 + p_l)/2$. We checked below this starting point to ensure that we had determined the smallest maximum sample size $n$ for which there was a nontrivial $(n_1,n_2 > 0)$ two-stage design that satisfied the error probability constraints. The enumeration procedure searched upwards from this minimum value of $n$ until it was clear that the optimum had been determined.The minimum expected sample size for fixed $n$ is not a unimodal function of n because of discreteness of the underlying binomial distributions. Nevertheless, eventually as $n$ increased the value of the local minima increased and it was clear that a global minimum had been found. Calculations were carried out in APL on a Microvax II computer. The computer program is available on request.
+
+
+	當 $\bar{p} = (p_0 + p_1)/2$ 時，我們在此起始點以下進行了檢查，以確保我們已經確定了在滿足錯誤機率限制條件的情況下，存在非平凡的 $(n_1,n_2 > 0)$ 兩階段設計的最小最大樣本大小 $n$。列舉程序從這個最小的 $n$ 值開始向上搜索，直到明確確定了最佳值。對於固定的 $n$，最小期望樣本大小不是 $n$ 的單峰函數，因為底層二項分布的離散性。儘管如此，隨著 $n$ 的增加，局部最小值的值也會增加，並且明顯地找到了全局最小值。計算是在 Microvax II 電腦上用 APL 完成的。該電腦程序可以根據要求提供。
+
+	Tables 1 and 2 show optimal designs for a variety of design parameters.Table 1 applies to trials with $p_l - p_0 = 0.20$ and Table 2 is for trials with $p_l - p_0 = 0.15$. The optimal designs are shown on the left half of the tables.For each $(p_0, p_l)$, the three rows correspond to optimal designs for $(\alpha,\beta) = (0.10,0.10),(0.05,0.20)$, and $(0.05,0.10)$, respectively. The tabulated results include the optimal size of the first stage $(n_1)$, the maximum sample size $(n)$,the upper limits on observed response rate that result in rejection of the drug at the end of the first stage $(r_1/n_l)$ and at the end of the trial $(r/n)$, the expected sample size [EN$(p_0)$], and probability of terminating the trial at the end of the first stage [PET$(p_0)$] if the response probability is $P_0$. For example, the first line in Table 1 corresponds to a design with $P_0 = 0.05$  and $p_1 = 0.25$. The first stage consists of nine patients. If no responses are seen then the trial is terminated. Otherwise accrual continues to a total of 24 patients. The average sample size is 14.5 and the probability of early termination is 0.63 for a drug with a response probability of 0.05. All calculations are based on exact binomial probabilities. 
+
+	表格1和表格2顯示了不同設計參數下的最佳設計方案。\\表格1適用於 $p_1 - p_0 = 0.20$ 的試驗，而表格2則適用於 $p_1 - p_0 = 0.15$ 的試驗。表格的左半部分顯示了最佳設計方案。對於每個 $(p_0, p_1)$ ，三行分別對應於 $(\alpha,\beta) = (0.10,0.10),(0.05,0.20),(0.05,0.10)$ 的最佳設計方案。表格中列出的結果包括第一階段的最佳大小 $(n_1)$、最大樣本大小 $(n)$、在第一階段結束時導致拒絕該藥物的觀察反應率上限 $(r_1/n_1)$ 和在試驗結束時的上限 $(r/n)$，預期樣本大小[EN$(p_0)$]，以及如果反應概率為 $P_0$ 時在第一階段結束時終止試驗的概率 [PET$(p_0)$]。例如，表格1中的第一行對應於一種設計，其中 $P_0 = 0.05$ ，$p_1 = 0.25$。第一階段包括九名患者。如果沒有觀察到反應，則試驗終止。否則，累積繼續進行到總共24名患者。平均樣本大小為14.5，對於反應概率為0.05的藥物，早期終止的概率為0.63。所有計算均基於精確的二項分佈概率。
+
+	As pointed out above, the optimal two-stage design does not necessarily minimize the maximum sample size $n$ subject to the error probability constraints. For example, consider the case of $(p_0,p_l) = (0.30,0.50)$ and $(\alpha,\beta) = (0.10,0.10)$. The optimal design, as seen in Table 1, has a maximum sample size of 46 patients. There is a two-stage design based on a maximum of 39 patients that also satisfies the error constraints. That design has $n_l = 28$,$r_l = 7$,$r = 15$. The expected sample size for that design is 35.0, a 17\% increase over the expected size of 29.9 for the design with the minimum expected sample size. For each set of design parameters in Tables 1 and 2, the left side shows the optimal design and the right side shows the two-stage design having the smallest maximum sample size $n$ that satisfies the design constraints. 
+
+	如上所述，最佳的兩階段設計並不一定在符合錯誤概率限制的情況下最小化最大樣本大小 $n$。例如，考慮 $(p_0,p_l) = (0.30,0.50)$ 和 $(\alpha,\beta) = (0.10,0.10)$ 的情況。如表格1所示，最佳設計的最大樣本大小為46名患者。然而，也有一種基於最多39名患者的兩階段設計，同樣滿足錯誤概率的限制條件。該設計的 $n_l = 28$，$r_l = 7$，$r = 15$。該設計的預期樣本大小為35.0，比最小預期樣本大小為29.9的設計多了17\%。在表格1和表格2中的每組設計參數中，左側顯示了最佳設計，右側則顯示了滿足設計條件的最小最大樣本大小 $n$ 的兩階段設計。
+
+	In some cases, the "minimax" design may be more attractive than that with the minimum expected sample size. This will be the case when the difference in expected sample sizes is small and the patient accrual rate is low. Consider,for example, the case of distinguishing $p_0 = 0.10 $ from $p_l = 0.30$ with $ \alpha = \beta  = 0.10$. The optimal design in Table 1 has an expected sample size under Ho of 19.8 and a maximum sample size of 35. The minimax two-stage design has an expected sample size of 20.4 and a maximum sample size of 25. If the accrual rate is only ten patients per year, it could take I year longer to complete the optimal design than the minimax design. This may be more important than the slight reduction in expected sample size. Also, the optimal designs achieve reductions in EN(p0) by having smaller first stages than the minimax designs. The small first stage exposes few patients to an inactive treatment.In cases where the patient population is very heterogeneous, however, a very small first stage may not be desirable because patients entered early in the study may be unrepresentative of the eligible population. Hence there are circumstances where the minimax designs are preferable. 
+
+	在某些情況下，"minimax" 設計可能比具有最小預期樣本大小的設計更具吸引力。這種情況將在預期樣本大小之間的差異很小且患者累積速率很低時出現。例如，考慮將 $p_0 = 0.10 $ 與 $p_l = 0.30$ 區分開來，並且 $ \alpha = \beta  = 0.10$ 的情況。表格1中的最佳設計在 $H_0$ 下具有19.8的預期樣本大小，並且最大樣本大小為35。最小最大兩階段設計具有20.4的預期樣本大小和25的最大樣本大小。如果每年只有十名患者參加，完成最佳設計可能需要比最小最大設計長一年的時間。這可能比預期樣本大小的輕微降低更為重要。此外，最佳設計通過比最小最大設計具有較小的第一階段來降低 EN$(p_0)$。較小的第一階段使得較少的患者接受無效治療。然而，在患者群體非常雜化的情況下，非常小的第一階段可能不理想，因為早期參加研究的患者可能不代表符合條件的整個人群。因此，在某些情況下，最小最大設計更具備吸引力。
+
+	Usually the minimax two-stage design has the same maximum sample size $n$ as the smallest single-stage design that satisfies the error probabilities. The minimax two-stage design has a smaller expected sample size under $H_0$, however. In determining the minimax designs, we have limited attention to nontrivial two-stage designs; those with $n_l$ and $r_l > 0$. In some cases, the minimax two-stage design has a smaller maximum sample size than the optimal single stage design. For example, the optimal single-stage design for distinguishing $p_0 = 0.60$ from $p_l = 0.80$ with $ \alpha = \beta = 0.10$ has a sample size of 36 and rejects $H_1$ if 25 or fewer responses are observed. As shown in Table 1, the minimax two-stage design for this case has a maximum sample size of 35.This is due to the discreteness of the binomial distribution and the fact that although the one- and two-stage designs both satisfy the error constraints,they do not have the same error probabilities. 
+
+	通常，最小最大兩階段設計具有與滿足錯誤概率的最小單階段設計相同的最大樣本大小 $n$。然而，在 $H_0$ 條件下，最小最大兩階段設計具有較小的預期樣本大小。在確定最小最大設計時，我們專注於非平凡的兩階段設計；即 $n_l$ 和 $r_l > 0$ 的設計。在某些情況下，最小最大兩階段設計的最大樣本大小比最佳單階段設計還要小。例如，用於區分 $p_0 = 0.60$ 和 $p_l = 0.80$ 的最佳單階段設計，具有 $ \alpha = \beta = 0.10$，樣本大小為36，如果觀察到25個或更少的反應則拒絕 $H_1$。如表格1所示，該情況下的最小最大兩階段設計的最大樣本大小為35。這是由於二項分佈的離散性以及雖然單階段和兩階段設計都滿足錯誤概率的限制，但它們並不具有相同的錯誤概率所導致的。
+
+\section{DISCUSSION}
+	A number of statistical designs have been previously proposed for phase II clinical trials. The first, and most commonly used design was developed by Gehan [5]. It is a two-stage design for estimating the response rate. It is most commonly employed with a first stage of 14 patients. If no responses are observed in the first stage, then the trial is terminated because this event has probability less than 0.05 if the true response probability is greater than or equal to 0.20. If at least one response is observed in the first 14 patients, then a second stage of accrual is carried out in order to obtain an estimate ofthe response probability having a specified standard error. The number of patients accrued in the second stage depends on the number of responses observed in the first stage and the desired standard error. Gehan's design is often used with a second stage of 11 patients. This provides for estimation with approximately a 10\% standard error, although this may provide very broad confidence limits. Requiring that the standard error be 5\% instead of 10\% provides estimates with more satisfactory precision, but requires much larger sample sizes. If the second stage is to be much larger, then it is not clear that the first stage should include only 14 patients. This is because even for a poor drug with a true response probability of 5\%, there is a 51\% chance of obtaining at least one response in the first 14 patients. 
+
+	在二期臨床試驗中，先前提出了許多統計設計。其中第一個且最常用的設計是由Gehan [5] 開發的。這是一種用於估計反應率的兩階段設計。它通常使用第一階段的14名患者。如果在第一階段沒有觀察到任何反應，則試驗會被終止，因為如果真實的反應概率大於或等於 $0.20$ ，這種情況的概率小於 $0.05$ 。如果在前14名患者中至少觀察到一個反應，則將進行第二階段的累積，以獲得具有指定標準誤差的反應概率估計。第二階段累積的患者數量取決於第一階段觀察到的反應數量和所需的標準誤差。Gehan的設計通常使用第二階段的11名患者。這提供了大約 $10\%$ 的標準誤差，儘管這可能會提供非常寬泛的置信區間。如果要求標準誤差為 $5\%$ 而不是 $10\%$ ，則需要更大的樣本大小來獲得更滿意的精確度。如果第二階段要大得多，那麼第一階段是否應該僅包括14名患者就不太清楚了。這是因為即使對於真實反應概率為 $5\%$ 的劣質藥物，前14名患者中至少獲得一個反應的概率也有 $51\%$ 。
+
+	Although one can make a cogent case that the main objective of phase III clinical trials should be estimation rather than hypothesis testing, in planning phase II trials it often seems more useful to identify levels of activity to distinguish than to select a precision for estimation. The two design principles are mathematically similar, but the hypothesis testing formulation encourages phase II trial designers to think carefully about the objectives of the experiment and to define how decisions will be influenced by results. It is for this reason that we have adopted the hypothesis testing framework employed by most authors. Jennison and Turnbull [6] and Chang and O'Brien [7] have described methods for calculating confidence intervals following sequential sampling procedures of the type proposed here. 
+
+	雖然有人堅持認為第三期臨床試驗的主要目標應該是估計而不是假設檢定，但在規劃第二期試驗時，通常更有用的是識別要區分的活性水平，而不是選擇估計的精確度。這兩種設計原則在數學上是類似的，但假設檢定的形式鼓勵第二期試驗設計者仔細考慮實驗的目標，並明確定義決策將如何受結果影響。正因為如此，我們採用了大多數作者所使用的假設檢定框架。Jennison和Turnbull [6]，以及Chang和O'Brien [7]，已經描述了計算類似於這裡提出的序列取樣程序後的置信區間的方法。
+
+	Schultz et al. [8] developed recursive formulas for calculating the operating characteristics of general k-stage designs with the possibility of acceptance and rejection at each stage. Early acceptance is appropriate for situations where patients are very limited or the drug is very expensive. Fleming [9] also studied k-stage designs with acceptance or rejection possible at each stage. Fleming's design is based on an approach developed for phase III trials [10] in which early rejection of a hypothesis occurs only when interim results are quite extreme. This conservatism permits final analysis to be unaffected by interim monitoring if early termination does not occur but is not always desirable for phase II trials of agents that are likely to be inactive. Lee et al. [11] considered two-stage designs that permit the possibility of recommending additional phase II trials. Herson [12] described a multistage Bayesian approach in which the trial is terminated early if the predictive probability of rejecting the null hypothesis at the maximum sample size falls below a specified level. The predictive probability is calculated with regard to the posterior distribution of p given the prior distribution and the data. None of the above authors attempted to optimize their designs
+
+	Schultz等人[8]發展了用於計算具有每個階段接受和拒絕可能性的一般k階段設計的操作特性的遞歸公式。在患者非常有限或藥物非常昂貴的情況下，早期接受是合適的。Fleming [9]也研究了每個階段可能接受或拒絕的k階段設計。Fleming的設計基於一種用於第三期試驗的方法[10]，其中只有在中期結果非常極端時才會提前拒絕假設。這種保守性使得最終分析不受中期監測的影響，如果沒有提前終止，但對於可能是無效的第二期試驗並不總是理想的。Lee等人[11]考慮了允許建議進行額外第二期試驗的兩階段設計。Herson [12]描述了一種多階段貝葉斯方法，其中如果在最大樣本大小時拒絕虛無假設的預測概率低於指定水平，則試驗將提前終止。預測概率是根據給定先驗分佈和數據的後驗分佈計算的。上述作者中沒有人試圖優化他們的設計。
+
+	Sylvester and Staquet [13] have provided an interesting decision theory approach to this problem, although the complexities of real-world decisionmaking are difficult to capture with simple models. Colton and McPherson [2] considered the design of two-stage clinical trials with binary outcome.They restricted attention to the case where the sample sizes of the two stages are equal and where the null hypothesis is $p=0.05$. They determined a total sample size and rejection regions $r_1$ and $r$ to minimize the expected sample size under the alternative hypothesis. 
+
+	Sylvester和Staquet [13]提出了一種有趣的決策理論方法來解決這個問題，儘管用簡單的模型捕捉現實世界的複雜決策過程是困難的。Colton和McPherson [2] 專注於設計具有二元結果的兩階段臨床試驗。他們特別研究了兩階段樣本大小相等且虛無假設為 $p=0.05$ 的情況。他們確定了總樣本大小以及拒絕區域 $r_1$ 和 $r$ 以最小化在替代假設下的預期樣本大小。
+
+	Chang et al. [14] have recently also considered the problem of optimizing the design of phase II trials. They described an algorithm that, although not guaranteed to find the optimum design, seemed to work well. For their designs early acceptance of the drug is permitted and the expected sample size,averaged over the null and alternative hypotheses, is minimized. In their published tables they have not optimized with regard to the maximum sample size. 
+
+	Chang等人[14]最近也考慮了優化第二期試驗設計的問題。他們描述了一種算法，雖然不能保證找到最優設計，但似乎效果很好。在他們的設計中，允許早期接受該藥物，並且在虛無假設和替代假設下對預期樣本大小進行了最小化。在他們發表的表格中，他們沒有針對最大樣本大小進行優化。
+
+	Comparison of the designs developed here to those published by others for distinguishing a null hypothesis $p\leq p_0$ from an alternative $ p \geq p_l $ is made difficult by the fact that two designs may not be equivalent with regard to the error probabilities $\alpha$ and $\beta$. Table 3 compares the optimum designs developed here with two-stage designs tabulated by Fleming [9] and by Chang et al. [14] for cases where the error probabilities are not too dissimilar. For most cases shown in Table 3, the new optimized designs offer a meaningful reduction in expected sample size when the null hypothesis is true. It must be recognized, however, that Fleming did not optimize with regard to the sample size within stages subject to constraints on the error probabilities. Chang et al. [14] presented optimized results only for three-stage designs.Also, the latter two designs provide for early rejection of the null hypothesis,a feature that may be useful in some clinical trials.
+
+	比較這裡開發的設計與其他人發表的設計，用於區分虛無假設 $p\leq p0$ 與替代假設 $ p \geq pl $ 是困難的，因為兩個設計可能在錯誤概率 $\alpha$ 和 $\beta$ 方面不等效。表3比較了這裡開發的最優設計與 Fleming [9] 和 Chang 等人 [14] 為那些錯誤概率不太相似的情況下列出的兩階段設計。對於表3中大多數案例，新的最優設計在虛無假設成立時提供了顯著的預期樣本大小減少。然而，需要注意的是，Fleming並未針對在錯誤概率限制下階段內的樣本大小進行優化。Chang等人 [14] 僅對三階段設計提出了優化結果。此外，後兩種設計允許對虛無假設進行早期拒絕，這是在某些臨床試驗中可能有用的特徵。
+
+	We have tabulated optimal phase II designs for $(\alpha,\beta)$ = $(0.10,0.10)$, $(0.05,0.20)$,and $(0.05,0.10)$. In phase II trials, both kinds of error are important. $\beta$ represents the probability of rejecting a treatment with response rate $\geq p_1$ . $\alpha$ represents the probability of failing to reject a treatment with response probability $\leq p_0$. This is a less serious error from a drug discovery viewpoint, but it is serious from a cost perspective since it leads to unnecessary follow-up trials. The tabulated designs should be appropriate for most situations. It is unusual to have $ \beta < \alpha $ and designs based on $ \alpha = \beta = 0.05 $ require too large a sample size for practical use in most phase II trials. Tabulation of the minimax designs should also be useful for those who prefer such designs or who wish to know the smallest value of maximum sample size to use for selecting designs of other types. 
+
+	我們已經列出了 $(\alpha, \beta) = (0.10, 0.10)$，$(0.05, 0.20)$，和 $(0.05, 0.10)$ 的最佳二期設計。在二期試驗中，兩種類型的錯誤都很重要。$\beta$ 表示拒絕具有反應率 $\geq p_1$ 的治療的概率。$\alpha$ 表示未能拒絕具有反應概率 $\leq p_0$ 的治療的概率。從藥物發現的角度來看，這是一種較輕微的錯誤，但從成本的角度來看卻很嚴重，因為它導致了不必要的後續試驗。表格中列出的設計應該適用於大多數情況。具有 $ \beta < \alpha $ 的情況是不尋常的，而基於 $ \alpha = \beta = 0.05 $ 的設計對於大多數二期試驗來說需要過大的樣本大小，因此在實際應用中不太實用。列出最小最大設計也將對那些偏好此類設計或希望了解最大樣本大小的最小值以用於選擇其他類型設計的人們非常有用。
+
+	For phase II trials of new drugs against solid tumors, designs with $(p_0,p_l)$ equal to $(0.05,0.20)$, $(0.05,0.25)$, or $(0.10,0.25)$ will often be appropriate. This is because many new drugs are almost totally inactive against the common solid tumors. Also, new drugs that provide relatively modest $(20\%-25\%)$ response rates against these refractory diseases are of interest for further development. In some cases effective treatments can be obtained by combining such drugs with other drugs, by optimizing their schedules or routes of administration, or by using them for patients with less advanced forms of the same histopathological type of cancer. Other tabulated designs will be appropriate for phase II trials of combination regimens. It is for this reason that the full range of $(p_0,p_l)$ was produced. For pilot studies of combinations,the level $p_l - p_0 = 0.20$ is commonly the degree of difference targeted. Designing a trial to distinguish only larger differences is often unrealistic and uninformative. A $p_l - p_0$ of $0.15$ is probably the smallest difference that one would consider for a phase II study because the sample sizes become prohibitively large for smaller differences and because the lack of controls limits the interpretability of trials based on distinguishing smaller differences. The designs presented here could also be utilized for pilot studies of intensive regimens with toxicity as the endpoint. In this case the hypotheses should be specified in terms of the probability of no toxic event. 
+
+	對於針對實體腫瘤的新藥的二期試驗，具有 $(p_0, p_1)$ 等於 $(0.05, 0.20)$，$(0.05, 0.25)$ 或 $(0.10, 0.25)$ 的設計通常是合適的。這是因為許多新藥對常見的實體腫瘤幾乎完全無效。此外，對這些難治性疾病提供相對較低 $(20\%-25\%)$ 反應率的新藥對於進一步開發是有興趣的。在某些情況下，通過將這些藥物與其他藥物結合使用，優化其治療方案或給藥途徑，或者將其用於病情不那麼嚴重的相同組織病理類型的癌症患者，可以獲得有效的治療效果。其他列出的設計將適用於組合療法的二期試驗。正是出於這個原因，才產生了完整範圍的 $(p_0, p_1)$。對於組合療法的試驗，常見的目標差異程度為 $p_1 - p_0 = 0.20$。設計試驗僅區分更大差異通常是不現實且無益的。對於二期研究來說，$p_1 - p_0 = 0.15$ 可能是考慮的最小差異，因為對於更小的差異，樣本大小會變得過大，且由於缺乏對照組，基於區分較小差異的試驗的可解釋性受到限制。這裡呈現的設計也可以用於以毒性為終點的密集療程的初步研究。在這種情況下，假設應該根據無毒性事件的概率來指定。
+
+	The optimization criterion chosen here is not unique. One could minimize the expected sample size averaged with regard to a prior distribution for the true response probability p. Historically, however, most new regimens are not successful and, more importantly, optimizing the design for performance under the null hypothesis seems ethically appropriate. 
+
+	這裡選擇的優化標準並不是唯一的。可以根據真實反應概率 $p$ 的先驗分佈，最小化平均預期樣本大小。然而，從歷史上看，大多數新療法並不成功，更重要的是，將設計優化為在虛無假設下的表現似乎符合道德。
+
+	As pointed out by DeMets [15], the decision to terminate a controlled clinical trial early is often complex and sequential boundaries are generally to be regarded as guidelines rather than rigid decision rules. This also applies to phase II clinical trials because there are secondary endpoints and sometimes patient subsets of interest. A decision to terminate a phase II trial for a treatment having poor activity for a well defined and fairly homogeneous set of patients, however, is generally less complex than a decision for early termination of a large controlled study.
+
+	正如DeMets [15]所指出的，提前終止一個控制性臨床試驗的決策通常是復雜的，而且通常應將序列邊界視為指導方針而不是嚴格的決策規則。這也適用於二期臨床試驗，因為其中存在次要終點，有時還有感興趣的患者子集。然而，對於一個對於一組明確定義且相當均質的患者表現不佳的治療提前終止二期試驗的決策通常比對一個大型控制性研究提前終止的決策要簡單得多。
+\section{REFERENCES}
+第一階段和整體試驗的反應數量分別為 $r_1$ 、$r$
+
+指定參數 $p_0$、$p_1$、$\alpha$、$\beta$
+
+同時對$n_1$、$n$、$r_1$、$r$的值最佳化
+
+\begin{table} [h]
+\centering
+    \caption{類別型變數(TARGET) VS 類別型變數}\label{類別型變數(TARGET) VS 類別型變數}
+    \renewcommand\arraystretch{1.5}
+    \resizebox{0.7\textwidth}{!}{
+      \begin{tabular}{lccc}
+    \hline \rowcolor{magicmint}
+    變數名稱 & Row Data & Down-Sampling & Up-Sampling\\\hline\rowcolor{mistyrose}
+    CODE-GENDER         & 0.001455 & 0.004762 & 0.004725\\\rowcolor{bubbles}
+    NAME-INCOME-TYPE    & 0.002115 & 0.007182 & 0.007373\\\rowcolor{mistyrose}
+    FLAG-MOBIL          & 0        & 0        & 0.000001\\\rowcolor{bubbles}
+    NAME-FAMILY-STATUS  & 0.000809 & 0.002415 & 0.002642\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-2    & 0.000009 & 0.00002  & 0.000032\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-3    & 0.001005 & 0.003616 & 0.003497\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-4    & 0.000007 & 0.000028 & 0.000031\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-5    & 0        & 0.000005 & 0       \\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-6    & 0.000458 & 0.001731 & 0.001762\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-7    & 0.000001 & 0.000024 & 0.000003\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-8    & 0.000035 & 0.00008  & 0.00011 \\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-9    & 0.00001  & 0.000037 & 0.00003 \\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-10   & 0.000002 & 0.000028 & 0.000009\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-11   & 0.00001  & 0.000029 & 0.000039\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-12   & 0        & 0        & 0.000002\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-13   & 0.000092 & 0.0003   & 0.000358\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-14   & 0.000057 & 0.000128 & 0.000223\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-15   & 0.000028 & 0.000133 & 0.000108\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-16   & 0.000077 & 0.00024  & 0.000293\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-17   & 0.000008 & 0.000013 & 0.000026\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-18   & 0.000035 & 0.000128 & 0.000105\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-19   & 0        & 0.000006 & 0.000002\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-20   & 0        & 0        & 0       \\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-21   & 0.000006 & 0.000033 & 0.000011\\\hline
+    \end{tabular}
+    }
+\end{table}
+
+
+\begin{table} [h]
+\centering
+    \caption{類別型變數(TARGET) VS 數值型變數}\label{類別型變數(TARGET) VS 數值型變數}
+    \renewcommand\arraystretch{1.5}
+    \resizebox{0.7\textwidth}{!}{
+      \begin{tabular}{lccc}
+    \hline \rowcolor{magicmint}
+    數值型變數                  & p-value  & Correlation& 名次\\\hline\rowcolor{mistyrose}
+    EXT-SOURCE-2               & 0        & -0.268909 & 1\\\rowcolor{bubbles}
+    EXT-SOURCE-3               & 0        & -0.242487 & 2\\\rowcolor{mistyrose}
+    YEARS-BIRTH                & 0        & -0.137025 & 3\\\rowcolor{bubbles}
+    YEARS-LAST-PHONE-CHANGE    & 0        & -0.10221  & 4\\\rowcolor{mistyrose}
+    YEARS-ID-PUBLISH           & 0        & -0.093831 & 5\\\rowcolor{bubbles}
+    YEARS-REGISTRATION         & 0        & -0.079577 & 6\\\rowcolor{mistyrose}
+    AMT-GOODS-PRICE            & 0        & -0.07716  & 7\\\rowcolor{bubbles}
+    REGION-POPULATION-RELATIVE & 0        & -0.07172  & 8\\\rowcolor{mistyrose}
+    AMT-CREDIT                 & 0        & -0.058562 & 9\\\rowcolor{bubbles}
+    DEF-30-CNT-SOCIAL-CIRCLE   & 0        &  0.055519 & 10\\\rowcolor{mistyrose}
+    DEF-60-CNT-SOCIAL-CIRCLE   & 0        &  0.05343  & 11\\\rowcolor{bubbles}
+    HOUR-APPR-PROCESS-START    & 0        & -0.044562 & 12\\\rowcolor{mistyrose}
+    MISSING-RATIO              & 0        &  0.041493 & 13\\\rowcolor{bubbles}
+    CNT-CHILDREN               & 0        &  0.036886 & 14\\\rowcolor{mistyrose}
+    AMT-REQ-CREDIT-BUREAU-HOUR & 0        &  0.03473  & 15\\\rowcolor{bubbles}
+    SUM-FLAG-DOCUMENT          & 0        &  0.030818 & 16\\\rowcolor{mistyrose}
+    AMT-ANNUITY                & 0        & -0.025253 & 17\\\rowcolor{bubbles}
+    SUM-AMT-REQ-CREDIT-BUREAU  & 0        &  0.021073 & 18\\\rowcolor{mistyrose}
+    CNT-FAM-MEMBERS            & 0        &  0.018427 & 19\\\rowcolor{bubbles}
+    OBS-30-CNT-SOCIAL-CIRCLE   & 0        &  0.01607  & 20\\\rowcolor{mistyrose}
+    OBS-60-CNT-SOCIAL-CIRCLE   & 0        &  0.015858 & 21\\\rowcolor{bubbles}
+    AMT-REQ-CREDIT-BUREAU-WEEK & 0        & -0.014009 & 22\\\rowcolor{mistyrose}
+    AMT-REQ-CREDIT-BUREAU-QRT  & 0.000001 &  0.00647  & 23\\\rowcolor{bubbles}
+    AMT-INCOME-TOTAL           & 0.00019  & -0.004976 & 24\\\rowcolor{mistyrose}
+    AMT-REQ-CREDIT-BUREAU-DAY  & 0.05339  & -0.002577 & 25\\\rowcolor{bubbles}
+    AMT-REQ-CREDIT-BUREAU-MON  & 0.14999  & -0.001921 & 26\\\rowcolor{mistyrose}
+    AMT-REQ-CREDIT-BUREAU-YEAR & 0.44256  &  0.001024 & 27\\\hline
+    \end{tabular}
+    }
+\end{table}
+
+\begin{table} [h]
+\centering
+    \caption{類別型變數(TARGET) VS 數值型變數}\label{類別型變數(TARGET) VS 數值型變數}
+    \renewcommand\arraystretch{1.5}
+    \resizebox{0.7\textwidth}{!}{
+      \begin{tabular}{lcc}
+    \hline \rowcolor{magicmint}
+    類別型變數 & Correlation & 名次\\\hline\rowcolor{mistyrose}
+    OCCUPATION-TYPE              & 0.010219 & 1\\\rowcolor{bubbles}
+    ORGANIZATION-TYPE            & 0.00829  & 2\\\rowcolor{mistyrose}
+    NAME-INCOME-TYPE             & 0.007373 & 3\\\rowcolor{bubbles}
+    REGION-RATING-CLIENT-W-CITY  & 0.006174 & 4\\\rowcolor{mistyrose}
+    NAME-EDUCATION-TYPE          & 0.006086 & 5\\\rowcolor{bubbles}
+    REGION-RATING-CLIENT         & 0.005799 & 6\\\rowcolor{mistyrose}
+    CODE-GENDER                  & 0.004725 & 7\\\rowcolor{bubbles}
+    FLAG-EMP-PHONE               & 0.003968 & 8\\\rowcolor{mistyrose}
+    REG-CITY-NOT-WORK-CITY       & 0.003497 & 9\\\rowcolor{bubbles}
+    FLAG-DOCUMENT-3              & 0.002722 & 10\\\hline
+    \end{tabular}
+    }
+\end{table}
+
+%------------------------------------------------------------------
+
+\begin{table} [h]
+\centering
+    \caption{類別型變數(TARGET) VS 類別型變數}\label{類別型變數(TARGET) VS 類別型變數&}
+    \renewcommand\arraystretch{1.5}
+    \resizebox{0.7\textwidth}{!}{
+      \begin{tabular}{lccc}
+    \hline \rowcolor{magicmint}
+    變數名稱 & Row Data & Down-Sampling & Up-Sampling\\\hline\rowcolor{mistyrose}
+    CODE-GENDER         & 0.001455 & 0.004762 & 0.004725\\\rowcolor{bubbles}
+    NAME-INCOME-TYPE    & 0.002115 & 0.007182 & 0.007373\\\rowcolor{mistyrose}
+    FLAG-MOBIL          & 0        & 0        & 0.000001\\\rowcolor{bubbles}
+    NAME-FAMILY-STATUS  & 0.000809 & 0.002415 & 0.002642\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-2    & 0.000009 & 0.00002  & 0.000032\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-3    & 0.001005 & 0.003616 & 0.003497\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-4    & 0.000007 & 0.000028 & 0.000031\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-5    & 0        & 0.000005 & 0       \\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-6    & 0.000458 & 0.001731 & 0.001762\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-7    & 0.000001 & 0.000024 & 0.000003\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-8    & 0.000035 & 0.00008  & 0.00011 \\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-9    & 0.00001  & 0.000037 & 0.00003 \\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-10   & 0.000002 & 0.000028 & 0.000009\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-11   & 0.00001  & 0.000029 & 0.000039\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-12   & 0        & 0        & 0.000002\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-13   & 0.000092 & 0.0003   & 0.000358\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-14   & 0.000057 & 0.000128 & 0.000223\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-15   & 0.000028 & 0.000133 & 0.000108\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-16   & 0.000077 & 0.00024  & 0.000293\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-17   & 0.000008 & 0.000013 & 0.000026\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-18   & 0.000035 & 0.000128 & 0.000105\\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-19   & 0        & 0.000006 & 0.000002\\\rowcolor{mistyrose}
+    FLAG-DOCUMAENT-20   & 0        & 0        & 0       \\\rowcolor{bubbles}
+    FLAG-DOCUMAENT-21   & 0.000006 & 0.000033 & 0.000011\\\hline
+    \end{tabular}
+    }
+\end{table}
+
+
+\begin{table} [h]
+\centering
+    \caption{類別型變數(TARGET) VS 數值型變數}\label{類別型變數(TARGET) VS 數值型變數&}
+    \renewcommand\arraystretch{1.5}
+    \resizebox{0.7\textwidth}{!}{
+      \begin{tabular}{lccc}
+    \hline \rowcolor{magicmint}
+    數值型變數                  & p-value  & Correlation& 名次\\\hline\rowcolor{mistyrose}
+    EXT-SOURCE-2               & 0        & -0.276487 & 1\\\rowcolor{bubbles}
+    EXT-SOURCE-3               & 0        & -0.237526 & 2\\\rowcolor{mistyrose}
+    YEARS-EMPLOYED             & 0        & -0.145311 & 3\\\rowcolor{bubbles}
+    YEARS-BIRTH                & 0        & -0.110074 & 4\\\rowcolor{mistyrose}
+    YEARS-LAST-PHONE-CHANGE    & 0        & -0.109692 & 5\\\rowcolor{bubbles}
+    AMT-GOODS-PRICE            & 0        & -0.096287 & 6\\\rowcolor{mistyrose}
+    AMT-CREDIT                 & 0        & -0.077473 & 7\\\rowcolor{bubbles}
+    REGION-POPULATION-RELATIVE & 0        & -0.077379  & 8\\\rowcolor{mistyrose}
+    YEARS-ID-PUBLISH           & 0        & -0.068854  & 9\\\rowcolor{bubbles}
+    YEARS-REGISTRATION         & 0        & -0.064597 & 10\\\rowcolor{mistyrose}
+    DEF-30-CNT-SOCIAL-CIRCLE   & 0        &  0.059300 & 11\\\rowcolor{bubbles}
+    HOUR-APPR-PROCESS-START    & 0        & -0.056860  & 12\\\rowcolor{mistyrose}
+    DEF-60-CNT-SOCIAL-CIRCLE   & 0        &  0.055843 & 13\\\rowcolor{bubbles}
+    MISSING-RATIO              & 0        &  0.050677 & 14\\\rowcolor{mistyrose}
+    AMT-REQ-CREDIT-BUREAU-HOUR & 0        &  0.041561 & 15\\\rowcolor{bubbles}
+    AMT-ANNUITY                & 0        & -0.038184  & 16\\\rowcolor{mistyrose}
+    SUM-FLAG-DOCUMENT          & 0        &  0.036164 & 17\\\rowcolor{bubbles}
+    SUM-AMT-REQ-CREDIT-BUREAU  & 0        &  0.024936 & 18\\\rowcolor{mistyrose}
+    OBS-30-CNT-SOCIAL-CIRCLE   & 0        &  0.020989 & 19\\\rowcolor{bubbles}
+    OBS-60-CNT-SOCIAL-CIRCLE   & 0        &  0.020878 & 20\\\rowcolor{mistyrose}
+    AMT-REQ-CREDIT-BUREAU-WEEK & 0        & -0.016187  & 21\\\rowcolor{bubbles}
+    CNT-CHILDREN               & 0        &  0.012827 & 22\\\rowcolor{mistyrose}
+    AMT-INCOME-TOTAL           & 0        & -0.011834 & 23\\\rowcolor{bubbles}
+    AMT-REQ-CREDIT-BUREAU-QRT  & 0.000001 &  0.007095  & 24\\\rowcolor{mistyrose}
+    CNT-FAM-MEMBERS            & 0.00019  & -0.004807 & 25\\\rowcolor{bubbles}
+    AMT-REQ-CREDIT-BUREAU-DAY  & 0.05339  & -0.002899 & 26\\\rowcolor{mistyrose}
+    AMT-REQ-CREDIT-BUREAU-MON  & 0.14999  & -0.002154 & 27\\\rowcolor{bubbles}
+    AMT-REQ-CREDIT-BUREAU-YEAR & 0.44256  & -0.000575 & 28\\\hline
+    \end{tabular}
+    }
+\end{table}
+
+\begin{table} [h]
+\centering
+    \caption{類別型變數(TARGET) VS 數值型變數}\label{類別型變數(TARGET) VS 數值型變數&}
+    \renewcommand\arraystretch{1.5}
+    \resizebox{0.7\textwidth}{!}{
+      \begin{tabular}{lcc}
+    \hline \rowcolor{magicmint}
+    類別型變數 & Correlation & 名次\\\hline\rowcolor{mistyrose}
+    OCCUPATION-TYPE              & 0.010219 & 1\\\rowcolor{bubbles}
+    ORGANIZATION-TYPE            & 0.00829  & 2\\\rowcolor{mistyrose}
+    NAME-INCOME-TYPE             & 0.007373 & 3\\\rowcolor{bubbles}
+    REGION-RATING-CLIENT-W-CITY  & 0.006174 & 4\\\rowcolor{mistyrose}
+    NAME-EDUCATION-TYPE          & 0.006086 & 5\\\rowcolor{bubbles}
+    REGION-RATING-CLIENT         & 0.005799 & 6\\\rowcolor{mistyrose}
+    CODE-GENDER                  & 0.004725 & 7\\\rowcolor{bubbles}
+    FLAG-EMP-PHONE               & 0.003968 & 8\\\rowcolor{mistyrose}
+    REG-CITY-NOT-WORK-CITY       & 0.003497 & 9\\\rowcolor{bubbles}
+    FLAG-DOCUMENT-3              & 0.002722 & 10\\\hline
+    \end{tabular}
+    }
+\end{table}
+
+\begin{table}[h]
+\centering
+    \caption{K-fold Validation的AUC} \label{tb:K-fold Validation的AUC}
+    \renewcommand{\arraystretch}{1.625}
+%    \extrarowheight=1.5pt
+\begin{tabular}{|c|c|c|c|}
+\hline
+\cellcolor{lightgray}{\backslashbox{\textbf{資料集}}{\textbf{模型方法}}} & \cellcolor{bubbles}{Logistic Regression} & \cellcolor{bubbles}{Decision Tree} & \cellcolor{bubbles}{Random Forest} \\
+\hline
+\cellcolor{mistyrose}{Raw Data} & \cellcolor{cream}{0.729287} & \cellcolor{cream}{0.5} & \cellcolor{cream}{0.709046} \\
+\hline
+\cellcolor{mistyrose}{Undersampling Data} & \cellcolor{cream}{0.728574} & \cellcolor{cream}{0.646759} & \cellcolor{cream}{0.711787} \\
+\hline
+\cellcolor{mistyrose}{Oversampling Data} & \cellcolor{cream}{0.729587} & \cellcolor{cream}{0.646103} & \cellcolor{cream}{0.711971} \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
+

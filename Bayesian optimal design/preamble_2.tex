@@ -1,0 +1,135 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK} 
+\defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
+\usepackage{xunicode} % Unicode support for LaTeX character names(accents, European chars, etc)
+\usepackage{xltxtra} 				% Extra customizations for XeLaTeX
+\usepackage{amsmath, amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx,subfig,float,wrapfig} % support the \includegraphics command and options
+\usepackage[outercaption]{sidecap} %[options]=[outercaption], [innercaption], [leftcaption], [rightcaption]
+\usepackage{array, booktabs}
+\usepackage{color, xcolor}
+\usepackage{longtable}
+\usepackage{colortbl}                          				
+\usepackage{listings}						% 直接將 latex 碼轉換成顯示文字
+\usepackage[parfill]{parskip} 				% 新段落前加一空行，不使用縮排
+\usepackage[left=1.5in,right=1in,top=1in,bottom=1in]{geometry} 
+\usepackage{url}
+\usepackage{amsmath, bm}
+\usepackage{upgreek}
+\usepackage{lipsum}
+\usepackage{adjustbox}
+\usepackage{sidecap}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{makecell}
+%\usepackage[french]{babel}
+\usepackage{titling}
+% 使用 setspace 套件
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{slashbox}
+\graphicspath{{D:/NTPU/LATEX/hw7/images/}}
+%-----------------------------------------------------------------
+%  中英文內文字型設定
+\setCJKmainfont							% 設定中文內文字型
+	[
+		BoldFont=Microsoft YaHei	    %定義粗體的字型（Win）
+%		BoldFont=蘋果儷中黑	    		%定義粗體的字型（Mac）
+	]
+	{新細明體}						% 設定中文內文字型(Win)
+%	{宋體-繁}							% 設定中文內文字型(Mac)	
+\setmainfont{Times New Roman}		% 設定英文內文字型
+\setsansfont{Arial}					% 無襯字字型 used with {\sffamily ...}
+%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
+\setmonofont{Courier New}			% 等寬字型 used with {\ttfamily ...}
+%\setmonofont[Scale=MatchLowercase]{Andale Mono}
+% 其他字型（隨使用的電腦安裝的字型不同，用註解的方式調整（打開或關閉））
+% 英文字型
+\newfontfamily{\E}{Calibri}				
+\newfontfamily{\A}{Arial}
+\newfontfamily{\C}[Scale=0.9]{Arial}
+\newfontfamily{\R}{Times New Roman}
+\newfontfamily{\TT}[Scale=0.8]{Times New Roman}
+% 中文字型
+\newCJKfontfamily{\MB}{微軟正黑體}				% 等寬及無襯線字體 Win
+\newCJKfontfamily{\SM}[Scale=0.8]{新細明體}	% 縮小版(Win)
+\newCJKfontfamily{\K}{標楷體}                	% Windows下的標楷體
+\newCJKfontfamily{\BB}{Microsoft YaHei}		% 粗體 Win
+
+% 以下為自行安裝的字型：CwTex 組合
+\newCJKfontfamily{\CF}{cwTeX Q Fangsong Medium}	% CwTex 仿宋體
+\newCJKfontfamily{\CB}{cwTeX Q Hei Bold}			% CwTex 粗黑體
+\newCJKfontfamily{\CK}{cwTeX Q Kai Medium}   	% CwTex 楷體
+\newCJKfontfamily{\CM}{cwTeX Q Ming Medium}		% CwTex 明體
+\newCJKfontfamily{\CR}{cwTeX Q Yuan Medium}		% CwTex 圓體
+
+%-----------------------------------------------------------------------------------------------------------------------
+\XeTeXlinebreaklocale "zh"             		%這兩行一定要加，中文才能自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt     		%這兩行一定要加，中文才能自動換行
+%-----------------------------------------------------------------------------------------------------------------------
+\newcommand{\cw}{\texttt{cw}\kern-.6pt\TeX}	% 這是 cwTex 的 logo 文字
+\newcommand{\imgdir}{../images/}				% 設定圖檔的目錄位置
+\renewcommand{\tablename}{表}	% 改變表格標號文字為中文的「表」（預設為 Table）
+\renewcommand{\figurename}{圖}% 改變圖片標號文字為中文的「圖」（預設為 Figure）
+
+% 設定顏色 see color Table: http://latexcolor.com
+\definecolor{slight}{gray}{0.9}				
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66} 
+\definecolor{arylideyellow}{rgb}{0.91, 0.84, 0.42}
+\definecolor{babyblue}{rgb}{0.54, 0.81, 0.94}
+\definecolor{cadmiumred}{rgb}{0.89, 0.0, 0.13}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\definecolor{beaublue}{rgb}{0.74, 0.83, 0.9}
+\definecolor{beige}{rgb}{0.96, 0.96, 0.86}
+\definecolor{bisque}{rgb}{1.0, 0.89, 0.77}
+\definecolor{gray(x11gray)}{rgb}{0.75, 0.75, 0.75}
+\definecolor{limegreen}{rgb}{0.2, 0.8, 0.2}
+\definecolor{splashedwhite}{rgb}{1.0, 0.99, 1.0}
+\definecolor{azure(web)(azuremist)}{rgb}{0.94, 1.0, 1.0}
+\definecolor{cadmiumorange}{rgb}{0.93, 0.53, 0.18}
+\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26}
+\definecolor{cadmiumred}{rgb}{0.89, 0.0, 0.13}
+\definecolor{candypink}{rgb}{0.89, 0.44, 0.48}
+\definecolor{cream}{rgb}{1.0, 0.99, 0.82}
+\definecolor{desertsand}{rgb}{0.93, 0.79, 0.69}
+\definecolor{mint}{rgb}{0.24, 0.71, 0.54}
+\definecolor{celadon}{rgb}{0.67, 0.88, 0.69}
+\definecolor{magicmint}{rgb}{0.24, 0.71, 0.54}
+\definecolor{mistyrose}{rgb}{0.67, 0.88, 0.69}
+\definecolor{bubbles}{rgb}{0.24, 0.71, 0.54}
+\definecolor{lightgray}{rgb}{0.24, 0.71, 0.54}
+
+
+
+%---------------------------------------------------------------------
+% 映出程式碼 \begin{lstlisting} 的內部設定
+\lstset
+{	language=[LaTeX]TeX,
+    breaklines=true,
+    %basicstyle=\tt\scriptsize,
+    basicstyle=\tt\normalsize,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    commentstyle=\color{limegreen}\itshape,
+    stringstyle=\rmfamily,
+    showstringspaces=false,
+    %backgroundcolor=\color{splashedwhite},
+    backgroundcolor=\color{slight},
+    frame=single,							%default frame=none 
+    rulecolor=\color{gray(x11gray)},
+    framerule=0.4pt,							%expand outward 
+    framesep=3pt,							%expand outward
+    xleftmargin=3.4pt,		%to make the frame fits in the text area. 
+    xrightmargin=3.4pt,		%to make the frame fits in the text area. 
+    tabsize=2				%default :8 only influence the lstlisting and lstinline.
+}
+
+% 映出程式碼 \begin{lstlisting} 的內部設定 for Python codes
+%\lstset{language=Python}
+%\lstset{frame=lines}
+%\lstset{basicstyle=\SCP\normalsize}
+%\lstset{keywordstyle=\color{blue}}
+%\lstset{commentstyle=\color{airforceblue}\itshape}
+%\lstset{backgroundcolor=\color{beige}}

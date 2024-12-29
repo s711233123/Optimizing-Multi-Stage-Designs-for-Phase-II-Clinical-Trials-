@@ -1,0 +1,172 @@
+\input{preamble_2}
+%-----------------------------------------------------------------------------------------------------------------------
+% 文章開始
+\title{Optimal three-stage designs for phase II cancer clinical trials}
+\author{{周昱宏}}
+\date{{\TT \today}}
+\begin{document}
+\maketitle
+\fontsize{12}{22 pt}\selectfont
+\doublespacing
+
+\section{summary}
+The objective of a phase II cancer clinical trial is to screen a treatment that can produce a similar or better response rate compared to the current treatment results. This screening is usually carried out in two stages as proposed by Simon. For ineffective treatment, the trial should terminate at the first stage. Ensign et al.extended two-stage optimal designs to three stages; however, they restricted the rejection region in the first stage to be zero response, and the sample size to at least 5. This paper extends Simon’s two-stage to a three-stage design without these restrictions, and provides tables for both optimal and minimax designs.One can use the three-stage design to reduce the expected sample size when the treatment is not promising a priori and when the accrual rate is slow. The average reduction in size from a two-stage to three-stage design is 10 per cent.  
+
+二期癌症臨床試驗的目標是篩選一種能夠產生與當前治療結果相似或更好反應率的治療方法。這種篩選通常是根據Simon提出的方法在兩個階段進行的。對於無效的治療，試驗應在第一階段終止。Ensign等人將兩階段最優設計延伸到了三階段；然而，他們限制了第一階段的拒絕區域為零反應，並且樣本大小至少為 $5$ 。本文將Simon的兩階段設計擴展到了三階段設計，並且沒有這些限制，並提供了最優和最小最大設計的表格。當治療在先驗上並不具有前景且累積速度緩慢時，可以使用三階段設計來減少預期樣本大小。從兩階段設計到三階段設計的平均減小量為 $10\%$ 。
+
+\section{INTRODUCTION}
+In testing a new drug against cancer, after determination of a maximally tolerated dose in phase I trials, one carries forward the drug at that dose and schedule to obtain a better estimate of antitumour activity in a phase II trial. A phase II trial evaluates a drug, biologic, or radiotherapy technique in a single modality or in combined modality regimens.
+
+在對抗癌症的新藥進行測試時，在一期試驗中確定了最大耐受劑量後，將以該劑量和劑量方案繼續進行藥物試驗，以獲得對抗腫瘤活性的更好估計。一期試驗評估了單一模式或組合模式療法中的藥物、生物製品或放射治療技術。
+	
+From past experience, efficacy of a treatment is disease-site specific; therefore, a phase II trial is limited to a specific type of cancer. The specific cancer type to test is determined through preclinical animal data and the data collected in phase I clinical trials. Patients should have good performance status and normal organ function. One must define the evaluability criteria carefully so that there is no ambiguity about who to count in the denominator.
+
+根據過去的經驗，一種治療的有效性是與疾病部位特定相關的；因此，一期試驗限定於特定類型的癌症。要測試的具體癌症類型是通過預臨床動物數據和一期臨床試驗中收集的數據來確定的。患者應具有良好的身體狀況和正常的器官功能。必須仔細定義評估標準，以確保對於誰應計入分母沒有任何歧義。
+
+The response variable for a phase II trial is tumour response, usually not survival, since the tumour response can be determined in the first few months of treatment and it usually has good correlation with survival within a specific type of cancer (subject to the limitation of a nonrandomized study).[1] To obtain precise evaluation of response, the patients should have measurable disease that one can assess through diagnostic tools. For solid tumours, response includes both complete and partial responses. Complete response (CR) means total disappearance of all evidence of tumours. Partial response (PR) means more than 50 per cent reduction in size of initially designated indicator lesions.
+
+二期試驗的反應變量是腫瘤反應，通常不是存活，因為腫瘤反應可以在治療的最初幾個月確定，並且通常與特定類型的癌症存活有良好的相關性（受到非隨機研究的限制）[1]。為了獲得精確的反應評估，患者應具有可以通過診斷工具評估的可測量疾病。對於實體腫瘤，反應包括完全反應和部分反應。完全反應（CR）意味著所有腫瘤證據完全消失。部分反應（PR）意味著最初指定的指示病變大小減少超過 $50\%$ 。
+
+Phase II trials usually are carried out in at least two different centres.Response rates from two trials may differ for several reasons: patient selection; different evaluability and response criteria; intra-evaluator and inter-evaluator variability or bias, and protocol compliance.Whether a drug will enter into a phase III trial depends not only on the tumour response observed in phase II trials, but also on its toxicity, survival result, and cross-resistance with other active agents.
+
+二期試驗通常至少在兩個不同的中心進行。兩個試驗的反應率可能由於多種原因而不同：患者選擇；不同的可評估性和反應標準；評估者內部和評估者間的變異性或偏差，以及方案遵從性。一種藥物是否進入三期試驗不僅取決於二期試驗中觀察到的腫瘤反應，還取決於其毒性、存活結果以及與其他有效劑型的交叉耐受性。
+
+The design of a phase II trial is based on a one-sample binomial statistic with the probability of success being the probability of achieving a response. From the current treatment results,one specifies both desirable and undesirable response rates. We wish to reject a drug as not promising if it is unlikely that it has the desirable response rate or higher (false negative error is small), and to accept a drug as promising if it is unlikely that it has the undesirable response rate or lower (false positive error is small). Here the undesirable response rate may or may not be the response rate of current standard treatment. Since we prefer not to miss any promising drug,the false negative error should usually be less than 10 per cent. It is reasonable to take both error rates as 10 per cent since there will usually be a second phase II trial that can further reduce both errors.[2]
+
+二期試驗的設計基於一個單樣本二項統計，其中成功的概率是達到反應的概率。從當前的治療結果中，我們指定了期望的和不希望的反應率。我們希望在不太可能達到期望的反應率或更高（偽陰性錯誤很小）的情況下拒絕一種藥物，並且在不太可能達到不希望的反應率或更低（偽陽性錯誤很小）的情況下接受一種藥物。這裡的不希望的反應率可能是或可能不是當前標準治療的反應率。由於我們希望不錯過任何有前景的藥物，因此偽陰性錯誤通常應該低於 $10\%$ 。將兩種錯誤率都設置為 $10\%$ 是合理的，因為通常會有第二個二期試驗，可以進一步降低這兩種錯誤率。[2]
+
+The trial is usually carried out in two stages so that it can terminate early at the end of the first stage when the drug is not effective[3],[4] (this is consistent with the Hippocratic ethical mandate of ‘do no harm’). Simon’s two-stage design and other multi-stage designs[5] are examples of a broad class of drug screening procedures.[6] This approach to phase II trials is identical to sampling inspection in the industrial quality control setting. The purpose is to screen treatments for promising results and for future possible large scale phase III comparative trials.
+
+試驗通常分兩個階段進行，這樣在第一階段結束時可以提前終止試驗，當藥物無效時[3],[4]（這與希波克拉底的道德原則“不造成傷害”一致）。Simon的兩階段設計[5]和其他多階段設計是廣泛的藥物篩選程序類型的示例。[6]這種二期試驗方法與工業質量控制中的抽樣檢驗相同。其目的是為了篩選有前景的治療方法，以及為未來可能的大規模三期比較試驗做準備。
+
+The reason we employ a hypothesis testing approach in a phase II trial is that we have to decide whether or not to proceed to a phase III trial. Hypothesis testing is suitable for making such a decision in a clinical trial setting; therfore, we design a phase II trial using this approach. After data collection, we compute an estimate of response rate and its confidence interval with possible bias adjustment due to the multi-stage design.[6],[7]
+
+在二期試驗中採用假設檢驗方法的原因是我們需要決定是否要進行三期試驗。在臨床試驗環境中，假設檢驗是用於做出這種決定的合適方法；因此，我們使用這種方法來設計二期試驗。在數據收集後，我們計算反應率的估計值及其可能因多階段設計而產生的偏差調整後的信賴區間。[6],[7]
+
+This paper will extend both the optimal and minimax two-stage designs in Simon[3] to three-stage designs. This extension can reduce the expected sample sizes when the treatment is ineffective by an average of 10 per cent from those of a two-stage design. The three-stage design is useful when the accrual is not fast, so that the temporary suspension of the study and examination of cumulative data does not create an onerous administrative burden. For a single institution phase II trial and the drug which did not produce responders for specific histology in phase I trial,the optimal three-stage designs are applicable.
+
+本文將將Simon的最優和最小最大兩階段設計[3]擴展為三階段設計。這種擴展可以將治療無效時的預期樣本大小平均降低 $10\%$ ，相較於兩階段設計。當累積不快時，三階段設計非常有用，因此研究的暫時中止和對累積數據的檢查不會造成繁瑣的行政負擔。對於單一機構的二期試驗和在一期試驗中未為特定組織病理產生反應的藥物，最優的三階段設計是適用的。
+\section{METHOD}
+We denote sample sizes at the first, second and final (third) stages by $n_1$, $n_2$ and $n_3$, with total size $N=n_1+n_2+n_3$ . Corresponding critical values at each stage are $r_1$, $r_2$ and $r_3$. Thus, entern1 patients at the first stage; if there are $r_1$ or fewer responses, terminate the study and reject the treatment. Otherwise, enter $n_2$ additional patients at the second stage; if there are $r_2$ or fewer responses out of $n_1+n_2$ patients, terminate the study and reject the treatment. Otherwise, enter $n_3$ additional patients at the third stage; if there are $r_3$ or fewer responses out of $N$ patients, reject the treatment for further study, since response rate is not sufficiently high to be worth pursuing further. Otherwise, conclude that the treatment is promising and merits further testing.
+
+我們用 $n_1$、$n_2$ 和 $n_3$ 分別表示第一階段、第二階段和最終（第三）階段的樣本大小，總大小為 $N = n_1 + n_2 + n_3$。每個階段相應的臨界值分別為 $r_1$、$r_2$ 和 $r_3$。因此，首先有 $n_1$ 名患者進入第一階段；如果有 $r_1$ 個或更少的反應，則終止試驗並拒絕治療。否則，在第二階段再增加 $n_2$ 名患者；如果 $n_1 + n_2$ 名患者中有 $r_2$ 個或更少的反應，則終止試驗並拒絕治療。否則，在第三階段再增加 $n_3$ 名患者；如果 $N$ 名患者中有 $r_3$ 個或更少的反應，則拒絕進一步研究該治療，因為反應率不足以值得進一步追求。否則，得出結論認為該治療有前途，值得進行進一步測試。
+
+We assume each patient’s response is a binary random variable with true success probability $p$ . Let $b(x; n, p)$ be the probability that there are $x$ responses in $n$ patients, that is
+
+我們假設每個患者的反應是一個二元隨機變量，其真實成功概率為 $p$。令 $b(x; n, p)$ 表示在 $n$ 名患者中有 $x$ 個反應的概率，即
+
+\begin{equation}
+\ b(x;n,p)=\left(\begin{array}{c}n\\ x\end{array}\right)p^x(1-p)^{n-x} \label{eq1}
+\end{equation}
+
+Let $B(r_1; n_1, p)$ denote the cumulative binomial probability of observing $r_1$ or fewer responses in $n_1$ patients. This cumulative probability is the probability of early termination after the first stage$(PET_1)$
+
+讓 $B(r_1; n_1, p)$ 表示在 $n_1$ 名患者中觀察到 $r_1$ 個或更少反應的累積二項概率。這個累積概率是第一階段終止（$PET_1$）的概率，即觀察到 $r_1$ 個或更少反應後提前終止試驗的概率。它可以用以下公式表示：
+
+\begin{equation}
+\ B(r_1;n_1,p)= \sum_{x \leq r_1}^{} b(x;n_1,p) \label{eq2}
+\end{equation}
+
+The probability of terminating at the second stage is
+
+第二階段終止的機率為
+
+\begin{equation}
+\ \sum_{x=r_1+1}^{\min[n_1,r_2]} b(x;n_1,p)B(r_2-x;n_2,p) \label{eq3}
+\end{equation}
+
+The overall probability of early termination $(PET_{all})$ is the sum of (\ref{eq2}) and (\ref{eq3}) . The probability of
+rejecting a treatment at the end of the third stage is
+
+整體提前終止的概率（$PET_{\text{all}}$）等於第一階段終止和第二階段終止的概率之和，即第三階段結束時拒絕治療的機率是：
+
+\begin{equation}
+\ \sum_{x_1=r_1+1}^{\min[n_1,r_3]}\sum_{x_2=r_2+1-x_1}^{\min[n_2,r_3-x_1]} b(x_1;n_1,p)b(x_2;n_2,p)B(r_3-x_1-x_2;n_3,p) \label{eq4}
+\end{equation}
+
+The total probability of rejecting a treatment is the sum of (\ref{eq2}), (\ref{eq3}) and (\ref{eq4}). The expected sample size $EN=n_1+(1-PET_1)n_2+(1-PET_{all}) n_3$.
+
+Let us denote the undesirable low response rate as $p_0$, and the desirable high response rate as $p_l$. If $p$ is $p_0$, we want to accept the treatment with a very low probability $\leq \alpha$ (reject the treatmentwith a very high probability $\geq 1-\alpha$). If $p$ is $p_l$, we want to reject the treatment with a very lowprobability $\leq \beta$ (accept the treatment with a very high probability$\geq 1-\beta$). We usually call $alpha$ the false positive error rate (false positive result for an ineffective drug) and $\beta$ the false negative error rate.
+
+讓我們將不理想的低反應率表示為 $p_0$，而理想的高反應率表示為 $p_l$。如果 $p$ 是 $p_0$，我們希望以非常低的概率小於或等於 $\alpha$ 接受治療（以非常高的概率大於或等於 $1-\alpha$ 拒絕治療）。如果 $p$ 是 $p_l$，我們希望以非常低的概率小於或等於 $\beta$ 拒絕治療（以非常高的概率大於或等於 $1-\beta$ 接受治療）。通常我們稱 $\alpha$ 為假陽性錯誤率（對於無效藥物的假陽性結果），而 $\beta$ 為假陰性錯誤率。
+
+There are many solutions of r’s and n’s that satisfy $\alpha$ and $\beta$ requirements. Within these we define the optimal solution as the one that has the minimum expected size when $p =p_0$. We also define a minimax solution as the one that has the minimum $N$, and within this fixed $N$ it has the minimum expected size when $p=p_0$. The latter solution is useful when there is a constraint on the patient source such as a single institution study.
+
+有許多滿足 $\alpha$ 和 $\beta$ 條件的 $r$ 和 $n$ 的解。在這些解中，我們將最佳解定義為當 $p = p_0$ 時具有最小期望大小的解。我們還將最小最大解定義為具有最小 $N$ 的解，在固定的 $N$ 中，當 $p = p_0$ 時具有最小期望大小的解。後一種解在患者來源有限的情況下很有用，例如單一機構的研究。
+
+I wrote a FORTRAN program to search exhaustively for these two solutions. The program was run on a Cray supercomputer. This program is available upon request for finding solutions for different values in $p_0$, $p_1$ than given in the following tables. Table I provides the optimal design for $p_1-p_0=0.20$, the minimum expected size under $p_0$[EN$(p_0)$], the probability of early termination at stage 1 under $p_0$ [$PET_1(p_0)$], and the overall probability of early termination under $p_0$ [$PET_{all}(p_0)$]. Table II provides the optimal design for $p_1-p_0=0.15$.Table III provides the minimax design for $p_1-p_0=0.20$ and Table IV provides the minimax design for $p_1-p_0=0.15$.
+
+我編寫了一個 FORTRAN 程序來穷举搜索這兩種解的解答。這個程序在一台Cray超級計算機上運行。您可以根據需要請求此程序，以便在 $p_0$、$p_1$ 不同於下表中給出的值時找到解答。表I 提供了 $p_1 - p_0 = 0.20$ 時的最佳設計，以及 $p_0$ 條件下的最小期望大小 [EN$(p_0)$]、$p_0$ 條件下第1階段提前終止的概率 [$PET_1(p_0)$] 和 $p_0$ 條件下整體提前終止的概率 [$PET_{all}(p_0)$]。表II 提供了 $p_1 - p_0 = 0.15$ 時的最佳設計。表III 提供了 $p_1 - p_0 = 0.20$ 時的最小最大設計，而表IV 則提供了 $p_1 - p_0 = 0.15$ 時的最小最大設計。
+
+\section{APPLICATION}
+For head and neck locally recurrent or metastatic cancer, the targeted desirable response is currently $30$ per cent for a single agent. We assume that the undesirable response rate is $10$ per cent, and false positive and false negative error rates are both $10$ per cent.For a one-stage design, we require 25 patients. The critical value is $4$. If there are $4$ or fewer responses out of $25$ patients, the treatment is deemed ineffective. Otherwise, it is deemed promising.
+
+對於頭頸部局部復發或轉移性癌症，目標的期望反應率目前為$30\%$，我們假設不良反應率為$10\%$，並且假陽性和假陰性的錯誤率均為$10\%$。對於單階段設計，我們需要25名患者。臨界值為$4$。如果在25名患者中有4名或更少的患者反應，則該治療被認為無效。否則，該治療被認為是有前景的。
+
+If we use an optimal design, Simon’s two-stage requires $n_1=12$, $r_1=1$; $N=35$, $r=5$; and EN$(p_0)=19.8$. This design reduces the expected sample size from $25$ to $19.8$, if the treatment has $p_0=0.10$. This design also requires $35$ patients if the treatment is effective.
+
+如果我們使用最佳設計，Simon的兩階段設計需要$n_1=12$，$r_1=1$；$N=35$，$r=5$；以及EN$(p_0)=19.8$。這個設計將預期樣本大小從$25$減少到$19.8$，假如治療的$p_0=0.10$。如果治療有效，這個設計同樣需要$35$名患者。
+
+For the three-stage optimal design, we have the following specifications: $n_1=10$, $r_1=0$;$n_1+n_2=19$, $r2=2$; $N=26$, $r_3=4$; and EN$(p_0)=17·8$. This design further reduces the expected sample size from $19.8$ to $17.8$ if the treatment has $p_0=0.10$. This design requires $26$ patients if the treatment is effective which is very close to the requirement of $25$ patients in the one-stage design. The large difference in maximal size between a two-stage and a three-stage design is due to the discreteness of the response variable, and is not true in every situation. For example, if we take $(\alpha, \beta)=(0.05, 0.10)$, the maximal size $N$ increases from $35$ to $45$ from a two-stage to a three-stage design.
+
+對於三階段最佳設計，我們有以下規格：$n_1=10$，$r_1=0$；$n_1+n_2=19$，$r_2=2$；$N=26$，$r_3=4$；以及EN$(p_0)=17.8$。如果治療的$p_0=0.10$，這個設計將進一步將預期樣本大小從$19.8$減少到$17.8$。如果治療有效，這個設計需要$26$名患者，非常接近單階段設計需要的$25$名患者。兩階段和三階段設計在最大樣本大小上的差異很大，這是由於反應變量的離散性造成的，並非在每種情況下都成立。例如，如果我們取$(\alpha, \beta)=(0.05, 0.10)$，兩階段設計的最大大小$N$從$35$增加到三階段設計的$45$。
+
+If we use a minimax design, Simon’s two-stage has $n_1=16$, $r_1=1$; $N=25$, $r=4$; and EN$(p_0)=20.4$. The second-stage specifications are identical to the one-stage design. The firststage is added on to terminate the study early if the treatment is ineffective.
+
+如果我們使用最小最大設計，Simon的兩階段設計具有$n_1=16$，$r_1=1$；$N=25$，$r=4$；以及EN$(p_0)=20.4$。第二階段的規格與單階段設計相同。第一階段的加入是為了在治療無效時提前終止研究。
+
+For the three-stage minimax design, the specifications are: $n_1=12$, $r_1=0$; $n_1+n_2=16$,$r_2=1$; $N=25$, $r_3=4$; and EN$(p0)=19.1$. Again, the third-stage specifications are identical to the one-stage design. Interestingly, the second-stage specifications are identical to the first stage of Simon’s design; however, this is not true in every situation.
+
+對於三階段的最小最大設計，規格如下：$n_1=12$，$r_1=0$；$n_1+n_2=16$，$r_2=1$；$N=25$，$r_3=4$；並且EN$(p_0)=19.1$。再次強調，第三階段的規格與單階段設計相同。有趣的是，第二階段的規格與Simon設計的第一階段相同；然而，這不是在每種情況下都成立的。
+
+\section{DISCUSSION}
+We have provided tables for a three-stage design. Comparison with those of two-stage designs shows that the decrease in expected sample size under $p=p_0$ from a two-stage to a three-stage design is not as great as the decrease from a one-stage to a two-stage design. Further extension to four stages or more may not be so useful.
+
+
+我們提供了三階段設計的表格。與兩階段設計的比較顯示，在$p=p_0$時，從兩階段到三階段設計的期望樣本大小減少並不像從一階段到兩階段設計的減少那麼大。進一步擴展到四個或更多階段可能不會那麼有用。
+
+For the optimal design, the maximal size requirement $(N)$ is always larger than that of the one-stage design. The comparison between the two-stage and the three-stage optimal designs shows that there is no consistent pattern — three-stage designs do not always require a larger $N$.The optimal design has the flavour of Pocock’s group sequential design;[8] the study can beterminated quite early, but the maximal sample size, however, could increase substantially.
+
+對於最優設計來說，最大樣本量需求（N）總是比單階段設計要大。比較兩階段和三階段最優設計顯示出並沒有一致的模式 — 三階段設計並不總是需要更大的N。最優設計帶有Pocock的群組序貫設計的特點；[8] 研究可以相當早地終止，但是最大樣本量可能會大幅增加。
+
+For the minimax design, the specifications for the final stage are almost always the same as the one-stage design. With few exceptions, the difference is very small. The minimax design has the flavour of the O’Brien—Fleming group sequential design;[9] it is conservative in spending the beta function, and maximal sample size increases only slightly.
+
+對於最小最大化設計來說，最終階段的規格幾乎總是與單階段設計相同。除了少數例外，差異非常小。最小最大化設計帶有O’Brien—Fleming群組序貫設計的特點；[9] 在控制beta函數方面比較保守，最大樣本量只會略微增加。
+
+There are concerns that in a co-operative group setting, the exact sizes at each stage may not be feasible. A statistical centre would not want to turn away patients just because they have met the number of patients needed at the first stage. It may be reasonable to have a grace period before the official halting of the study. In this case, the actual size achieved at each stage could deviate from the design slightly. There are modifications of two-stage designs proposed to deal with this situation.[10]
+
+有人擔心在合作群組設置中，每個階段的確切樣本量可能不太可行。統計中心不希望因為已經達到第一階段所需的樣本數而拒絕患者。在正式終止研究之前，可能會合理地設置一段寬限期。在這種情況下，每個階段實際達到的樣本量可能會略微偏離設計。已有提出修改的雙階段設計來應對這種情況。
+
+One can use the exact size design herein in the setting of a single institution or a few institutions study. In this situation, the accrual is not fast, the exact size is easier to achieve, and the suspension of study is also not too difficult.
+
+可以在單一機構或少數機構的研究設置中使用這裡提出的精確樣本量設計。在這種情況下，患者的累積速度較慢，因此能夠達到精確的樣本量更容易，同時暫停研究也不會太困難。
+
+In both Simon’s two-stage and my three-stage design, we do not recommend to terminate the trial early when the response rate is very high. First, for a small number of patients,patient selection could be a factor. Second, there is no ethical requirement to terminate the trial early for a beneficial treatment. Third, more patients provide a more precise estimate of the response rate.
+
+在Simon的兩階段設計和我提出的三階段設計中，我們不建議在反應率非常高時提前終止試驗。首先，對於少數患者來說，患者選擇可能是一個因素。其次，對於一種有益的治療，沒有倫理要求提前終止試驗。第三，更多的患者提供了對反應率更精確的估計。
+
+One can also use the design given here for toxicity monitoring. Suppose that $q_1$ is the acceptable toxicity and $q_0$ is the unacceptable toxicity. If the true toxicity is $q_1$, we want to conclude that the treatment is toxic with low probability$\leq \beta$. If the true toxicity is $q_0$, we want to conclude that the treatment is safe with low probability $\leq \alpha$. A specific design requires entry of $n_1$ at the first stage. If there are $n_1-r_1$ or more toxic events, the study terminates and the treatment is too toxic. Otherwise, we enter $n_2$ additional patients at the second stage. If there are $n_1+n_2-r_2$ or more toxic events out of $n_1+n_2$ patients, the study terminates and the treatment is too toxic. Otherwise, we enter $n_3$ additional patients at the third stage. If there are $N-r_3$ or more toxic events out of $N$ patients, the treatment is too toxic. Otherwise, we deem the toxicity of treatment acceptable. One can obtain these $r$ and $n$ values from the tables provided here with $q_1=1-p_1$, and $q_0=1-p_0$, and the designs are similarly optimal and minimax.
+
+可以使用這裡提供的設計來進行毒性監測。假設 $q_1$ 是可接受的毒性水平，$q_0$ 是不可接受的毒性水平。如果真實的毒性是 $q_1$，我們希望以低於 $\beta$ 的概率得出治療具有毒性的結論。如果真實的毒性是 $q_0$，我們希望以低於 $\alpha$ 的概率得出治療是安全的結論。具體的設計要求在第一階段輸入 $n_1$ 位患者。如果有 $n_1 - r_1$ 或更多的毒性事件，試驗終止並認為治療過於毒性。否則，我們在第二階段進入額外的 $n_2$ 位患者。如果在 $n_1 + n_2$ 位患者中有 $n_1 + n_2 - r_2$ 或更多的毒性事件，試驗終止並認為治療過於毒性。否則，我們在第三階段進入額外的 $n_3$ 位患者。如果在 $N$ 位患者中有 $N - r_3$ 或更多的毒性事件，則治療過於毒性。否則，我們認為治療的毒性是可以接受的。可以從這裡提供的表格中獲得這些 $r$ 和 $n$ 值，其中 $q_1 = 1 - p_1$，$q_0 = 1 - p_0$，設計同樣是最優和最小最大化的。
+
+Ensign \textit{et al.}[11] have proposed an optimal three-stage design with restrictions $r_1=0$ and $n_1 \geq 5$.Comparison of their tables with the tables herein indicates some discrepancy. For example, the three entries under $p_0=0.05$ and $p_1=0.25$ and the first two entries under $p_0=0.05$ and $p_1=0.20$. There are other entries in their tables that also need revision. The corrected entries appear in Table V. The additional restrictions increase EN$(p_0)$ and make the first stage redundant for large $p_0$ (as seen from the fact that the entries in the second and the third stages are the same as those of Simon[3]). Their approach was motivated on ethical grounds to protect the patients against very low $p$. However, a new drug is usually not tested in every cancer type. The selection of types to test in phase II is guided by phase I trials and preclinical animal testing results. Therefore, a very low p is unlikely. Also in my Tables I—IV, for the situations where $n_1-r_1 \leq 5$, we also can terminate at the first stage if we observe no response in the first $n_1-r_1$ patients.
+
+Ensign \textit{et al.} [11] 提出了一種具有限制條件 $r_1=0$ 和 $n_1 \geq 5$ 的最優三階段設計。與這裡的表格進行比較顯示了一些差異。例如，在 $p_0=0.05$ 和 $p_1=0.25$ 下的三個項目，以及在 $p_0=0.05$ 和 $p_1=0.20$ 下的前兩個項目。他們的表格中還有其他需要修訂的項目。修正後的項目出現在表格 V 中。額外的限制增加了 EN$(p_0)$，使得第一階段對於較大的 $p_0$ 是多餘的（從第二和第三階段的項目與 Simon [3] 的相同性可以看出）。他們的方法是出於保護患者免受非常低 $p$ 的倫理原因而提出的。然而，一種新藥通常不會在每種癌症類型中都進行測試。在第二期試驗中選擇測試的類型受到第一期試驗和預臨床動物測試結果的指導。因此，非常低的 $p$ 是不太可能的。此外，在我的表格 I 至 IV 中，對於 $n_1 - r_1 \leq 5$ 的情況，如果在前 $n_1 - r_1$ 名患者中觀察到沒有反應，我們也可以在第一階段終止試驗。
+
+For the one-sample approach there are other approaches such as a Bayesian method[12],[13] and a decision theoretic method.[14][15] To incorporate historical controls in a phase II trial, there is the Bayesian method.[16] For a review of statistical designs for a phase II trial, I refer the reader to Mariani and Marubini.[17]
+
+進行單一樣本方法時，還有其他方法，如貝葉斯方法[12],[13]和決策理論方法[14][15]。在第二期試驗中引入歷史對照時，可採用貝葉斯方法[16]。有關第二期試驗的統計設計的綜述，建議讀者參考Mariani和Marubini[17]。
+\section{ACKNOWLEDGEMENTS}
+The author wishes to thank Drs. Richard Simon and Edward Korn and two referees for their constructive comments. He also acknowledges the National Cancer Institute for allocation of computing time at the Frederick Biomedical Supercomputing Center.
+
+作者感謝Richard Simon博士、Edward Korn博士和兩位審稿人的建討和意見。同時，他也感謝美國國家癌症研究所在Frederick生物醫學超級計算中心分配的計算時間。
+\section{REFERENCES}
+
+\begin{equation}
+\ B(r_1;n_1,p) + \sum_{x=r_1+1}^{\min[n_1,r_2]} b(x;n_1,p)B(r_2-x;n_2,p)  \label{eq99}
+\end{equation}
+
+同時對$n_1$、$n_1+n_2$、$N$ 以及 $r_1$、$r_2$、$r_3$ 的值最佳化
+
+\end{document}
+

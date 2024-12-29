@@ -1,0 +1,143 @@
+\documentclass[xcolor=red]{beamer}
+\usecolortheme[named=red]{structure}
+\input{preamble_ppt.tex}
+\usetheme{Warsaw}
+\useoutertheme{miniframes}
+\title{臨床試驗中多階段設計基於粒子群演算法的最佳化}
+\author{{周昱宏}}
+\date{{\R \today}}
+\begin{document}
+\maketitle
+\begin{frame}{目錄}
+	\tableofcontents 
+\end{frame}
+
+\section{研究背景}
+\begin{frame}
+\frametitle{研究背景}
+\begin{itemize}
+\item 說明多階段臨床試驗設計的為什麼重要，不僅是基於人道主義和成本把控、資源浪費、實驗效率、應對複雜問題。舉例Simon's兩階段設計如何幫助在提早終止無效試驗中，節省資源並減少病患風險（參考Simon 1989）。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{研究背景}
+\begin{itemize}
+\item 討論為何需要採用三階段設計來進一步最佳化樣本量，尤其是在藥物初步評估不佳的情況下，三階段設計能有效降低期望樣本量（參考Chen 1997）。
+
+\item PSO如何實現多階段試驗設計的優勢。
+\end{itemize}
+\end{frame}
+
+\section{文獻回顧}
+\begin{frame}
+\frametitle{文獻回顧}
+\begin{itemize}
+\item 比較Simon's兩階段設計與Chen的三階段設計的區別，討論各自的方法論，並且推導到K階段
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{文獻回顧}
+\begin{itemize}
+\item 說明兩篇文獻對於多階段臨床試驗設計的貢獻，特別是在樣本量最佳化和錯誤率控制方面的不同策略。
+\item 引入兩階段設計的「最小期望樣本量」與「最小最大樣本量」設計的概念，並分析對臨床試驗的影響​(simon1989)​(chen1997)。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{文獻回顧}
+\begin{itemize}
+\item 舉例2與3階段設計的組合並枚舉更多階段可能性組合，並指出其複雜性和困難所在。
+\end{itemize}
+\end{frame}
+\section{pso演算法}
+
+
+
+\begin{frame}
+\frametitle{pso演算法}
+\begin{itemize}
+\item 介紹粒子群優化（PSO）的理論背景，說明基本原理(Qiu2014)。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{pso演算法}
+\begin{itemize}
+\item 具體說明PSO如何在臨床試驗設計中尋找最佳樣本量組合與提早終止條件。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{pso演算法}
+\begin{itemize}
+\item 討論PSO的參數設置（如搜索範圍、粒子群數量、迭代次數）對結果的影響，而演算法運用在多階段設計中的優勢是什麼?
+\end{itemize}
+\end{frame}
+
+\section{程式碼與算法}
+\begin{frame}
+\frametitle{程式碼與算法}
+\begin{itemize}
+\item 使用(圖表or流程圖)來展示如何設定參數、演算法的運行過程。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{程式碼與算法}
+\begin{itemize}
+\item 展示PSO在臨床試驗設計中的核心程式碼，解釋其步驟的目的。
+\end{itemize}
+\end{frame}
+
+\section{現有結果}
+\begin{frame}
+\frametitle{現有結果}
+\begin{itemize}
+\item 展示PSO執行的結果，包括最佳設計和minimax設計的輸出，相較Chen 1997 有更好的結果。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{現有結果}
+\begin{itemize}
+\item 以及推廣到更多階段的最佳設計和minimax設計的結果。
+\item 分析結果中的樣本量組合與終止條件，探討其對臨床試驗時間和成本的影響。
+\end{itemize}
+\end{frame}
+
+\section{討論與挑戰}
+\begin{frame}
+\frametitle{討論與挑戰}
+\begin{itemize}
+\item 討論初步結果的意義，包括PSO在優化多階段臨床試驗設計中的優勢和局限(離散性)。
+\item 指出在運行過程中遇到的挑戰，如演算法穩定度、收斂速度、參數敏銳度等。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{討論與挑戰}
+\begin{itemize}
+\item 是否能根據第一次結果調整參數進行第二次運行，並討論程式碼調整後的改進效果。
+\end{itemize}
+\end{frame}
+
+\section{未來規劃}
+\begin{frame}
+\frametitle{未來規劃}
+\begin{itemize}
+\item 展示接下來的研究方向，例如是否有辦法提高演算法穩定度、收斂速度。
+\item 提出未來可能研究的方向，例如探索更複雜的臨床試驗設計問題或採用其他文獻來補充。
+\end{itemize}
+\end{frame}
+
+\section{參考文獻}
+\begin{frame}
+\frametitle{參考文獻}
+\begin{itemize}
+\item 列出所引用的主要文獻，包括Simon's 1989年文章、Chen's 1997年文章、Qiu's 2014年文章。
+\end{itemize}
+\end{frame}
+\end{document}
+
